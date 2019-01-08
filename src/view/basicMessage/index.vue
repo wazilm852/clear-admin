@@ -65,7 +65,8 @@ export default {
   padding-bottom: 0;
 }
 .message{
-    width: 767px;
+    // width: 767px;
+    width: 32%;
     height: 340px;
     background-color: #fff;
     float: left;

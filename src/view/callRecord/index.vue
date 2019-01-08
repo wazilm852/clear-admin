@@ -12,7 +12,7 @@
         <!-- 表格===================================== -->
         <Table border :columns="columns_callRecord" :data="data_callRecord"></Table>
         <!-- 分页===================================== -->
-        <div class="page_callRecord">
+        <div class="page_callRecord" id="pages">
           <span class="first" @click="page_first">首页</span>
           <Page
             :total="dataCount"
@@ -141,12 +141,18 @@ export default {
         .then(res => {
           this.totalPages = Math.ceil(res.data.data.total / this.pageSize);
           this.dataCount = res.data.data.total;
+          var pages = document.getElementById("pages")
+          if(this.dataCount <= this.pageSize){
+            pages.style.display = "none";
+          } else {
+            pages.style.display = "block";
+          }
           var daList = res.data.data.list;
           for (let i = 0; i < daList.length; i++) {
             this.data_callRecord.push({
               name: this.nameList[daList[i].serviceType - 1],
               location: daList[i].ip,
-              data: moment(daList[i].createAt).format('YYYY年MM月DD日'),
+              data: moment(daList[i].createAt).format('YYYY年MM月DD日 HH:mm:ss'),
               status: daList[i].reqStatus == 0 ? "成功" : "失败",
               falgToll: daList[i].reqStatus == 0 ? "是" : "否"
             });
@@ -171,7 +177,7 @@ export default {
             this.data_callRecord.push({
               name: this.nameList[daList[i].serviceType - 1],
               location: daList[i].ip,
-              data: moment(daList[i].createAt).format('YYYY年MM月DD日'),
+              data: moment(daList[i].createAt).format('YYYY年MM月DD日 HH:mm:ss'),
               status: daList[i].reqStatus == 0 ? "成功" : "失败",
               falgToll: daList[i].reqStatus == 0 ? "是" : "否"
             });
@@ -195,7 +201,7 @@ export default {
             this.data_callRecord.push({
               name: this.nameList[daList[i].serviceType - 1],
               location: daList[i].ip,
-              data: moment(daList[i].createAt).format('YYYY年MM月DD日'),
+              data: moment(daList[i].createAt).format('YYYY年MM月DD日 HH:mm:ss'),
               status: daList[i].reqStatus == 0 ? "成功" : "失败",
               falgToll: daList[i].reqStatus == 0 ? "是" : "否"
             });
@@ -221,7 +227,7 @@ export default {
             this.data_callRecord.push({
               name: this.nameList[daList[i].serviceType - 1],
               location: daList[i].ip,
-              data: moment(daList[i].createAt).format('YYYY年MM月DD日'),
+              data: moment(daList[i].createAt).format('YYYY年MM月DD日 HH:mm:ss'),
               status: daList[i].reqStatus == 0 ? "成功" : "失败",
               falgToll: daList[i].reqStatus == 0 ? "是" : "否"
             });
@@ -246,7 +252,7 @@ export default {
             this.data_callRecord.push({
               name: this.nameList[daList[i].serviceType - 1],
               location: daList[i].ip,
-              data: moment(daList[i].createAt).format('YYYY年MM月DD日'),
+              data: moment(daList[i].createAt).format('YYYY年MM月DD日 HH:mm:ss'),
               status: daList[i].reqStatus == 0 ? "成功" : "失败",
               falgToll: daList[i].reqStatus == 0 ? "是" : "否"
             });
@@ -265,7 +271,7 @@ export default {
 }
 .content {
   background-color: #fff;
-  height: 100%;
+  height: auto;
   padding: 24px;
   padding-bottom: 0;
   .title {
@@ -290,7 +296,7 @@ export default {
     opacity: 0.3;
   }
   .table {
-    height: 93%;
+    height: 100%;
     position: relative;
     margin-top: 8px;
   }
@@ -305,11 +311,12 @@ export default {
     .page_callRecord {
       width: 100%;
       height: 32px;
-      position: absolute;
-      // top: 870px;
-      bottom: 50px;
-      left: 0;
+      // position: absolute;
+      // bottom: 50px;
+      // left: 0;
       text-align: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
       .first {
         font-size: 14px;
         color: rgba(153, 153, 153, 1);
@@ -360,5 +367,8 @@ export default {
       }
     }
   }
+}
+.ivu-table-row-hover td {
+  background-color: #f9f9f9!important;
 }
 </style>

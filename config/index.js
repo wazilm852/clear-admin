@@ -43,7 +43,8 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'http://huluwa-fangxinqian-2h1.oss-cn-hangzhou.aliyuncs.com/dist/',
+    // assetsPublicPath: 'http://huluwa-fangxinqian-2h1.oss-cn-hangzhou.aliyuncs.com/dist/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

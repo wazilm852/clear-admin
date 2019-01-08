@@ -549,10 +549,11 @@ export default {
     .goodShow-box {
       height: 100%;
       width: 80%;
-      // width: 984px;
-      float: left;
-      margin-left: 55px;
+      // float: left;
+      float:right;
+      // margin-left: 55px;
       position: relative;
+      overflow:auto
       .title-box {
         // height: 20%;
         height: 225px;
@@ -596,7 +597,7 @@ export default {
             margin-bottom: 10px;
           }
           .example_code {
-            height: 324px;
+            height: 360px;
             border: 1px solid #e1e1e1;
             padding: 17px 170px 21px 40px;
             line-height: 19px;
@@ -609,7 +610,7 @@ export default {
         }
         #firstSignature {
           .example_code {
-            height: 404px;
+            height: 440px;
           }
           .example_custom {
             height: 446px;
@@ -629,7 +630,7 @@ export default {
         }
         #autoCreate {
           .example_code {
-            height: 481px;
+            height: 500px;
           }
           .text_img {
             img {
@@ -673,6 +674,9 @@ export default {
           float: left;
           font-size:16px;
           color:#5F666B;
+          a{
+            color:#379DE6;
+          }
       }
   }
 }
@@ -682,7 +686,7 @@ export default {
   .ivu-tabs {
     height: 100%;
     .ivu-tabs-bar {
-      height: 37px;
+      height: 36px;
     }
     .ivu-tabs-content {
       height: 95.7%;
@@ -693,8 +697,9 @@ export default {
   }
   .anchor {
     float: left;
-    // width: 12.5%;
-    width: 155px;
+    width: 20%;
+    // width: 155px;
+    // width: 15%;
     height: 100%;
     // text-align: right;
     padding-right: 5px;
@@ -741,6 +746,9 @@ export default {
 .ivu-anchor-link-active > .ivu-anchor-link-title{
   color:#39BBAF;
 }
+a:hover{
+  color: #39BBAF;
+}
 .btn{
   opacity:0;
 }
@@ -755,5 +763,8 @@ export default {
 }
 .ivu-tabs-ink-bar{
   display: none;
+}
+.ivu-table-row-hover td {
+  background-color: #f9f9f9!important;
 }
 </style>

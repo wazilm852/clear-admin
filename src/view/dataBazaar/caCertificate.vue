@@ -257,8 +257,8 @@ export default {
       height: 100%;
       width: 80%;
       // width: 984px;
-      float: left;
-      margin-left: 55px;
+      float: right;
+      // margin-left: 55px;
       position: relative;
       .title-box {
         // height: 20%;
@@ -333,6 +333,9 @@ export default {
       float: left;
       font-size: 16px;
       color: #5f666b;
+      a{
+        color:#379DE6;
+      }
     }
   }
 }
@@ -342,7 +345,7 @@ export default {
   .ivu-tabs {
     height: 100%;
     .ivu-tabs-bar {
-      height: 37px;
+      height: 36px;
     }
     .ivu-tabs-content {
       height: 95.7%;
@@ -353,8 +356,8 @@ export default {
   }
   .anchor {
     float: left;
-    // width: 12.5%;
-    width: 155px;
+    width: 20%;
+    // width: 155px;
     height: 100%;
     // text-align: right;
     padding-right: 5px;
@@ -392,5 +395,8 @@ export default {
 }
 .ivu-tabs-ink-bar{
   display: none;
+}
+.ivu-table-row-hover td {
+  background-color: #f9f9f9!important;
 }
 </style>

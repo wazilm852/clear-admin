@@ -1,17 +1,8 @@
 <template>
   <div id="changePassword">
-    <div class="banner">
-      <div class="banner_count">
-        <img src="../images/logo.png" alt class="logo">
-        <div class="box">
-          <p class="title">放心签客户后台系统</p>
-          <p class="e_title">Relax Signature Customer Background System</p>
-        </div>
-      </div>
-    </div>
-
+    <img src="../images/logo.png" alt class="logo">
     <div class="content">
-      <h2 style="marginBottom:20px;color:#302F2D">更改密码</h2>
+      <p class="title">更改密码</p>
       <Form ref="formInline" :model="formInline" :rules="ruleInline">
         <FormItem prop="user">
           <Input type="text" v-model="formInline.user" placeholder="请输入您的手机号"></Input>
@@ -31,7 +22,7 @@
         </FormItem>
       </Form>
       <router-link :to="{name:'login'}">
-        <span style="color:#575553">暂不修改</span>
+        <span style="color:#575553;fontSize:14px">暂不修改</span>
       </router-link>
     </div>
   </div>
@@ -72,7 +63,7 @@ export default {
       }
     };
   },
-  created () {
+  created() {
     this.show();
   },
   methods: {
@@ -132,9 +123,13 @@ export default {
         }
       }, 1000);
       http.post("admin/code/get", { phone: this.formInline.user }).then(res => {
+        console.log(res);
         if (res.data.code == 200) {
           this.formInline.code = res.data.data;
           this.$Message.success("发送成功!");
+        }
+        if (res.data.code == 102) {
+          this.$Message.success(res.data.msg);
         }
       });
     }
@@ -142,90 +137,71 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.banner {
-  height: 412px;
+#changePassword {
   width: 100%;
-  background-color: orange;
-  background-image: url(../images/banner.png);
-  background-size: cover;
-  text-align: center;
-  margin-bottom: 48px;
-  .banner_count {
-    width: 100%;
-    height: 100%;
-    background: rgba(43, 59, 75, 0.55);
-    .logo {
-      width: 196px;
-      height: 68px;
-      margin-top: 149px;
-      margin-bottom: 30px;
-    }
-    .box {
-      width: 364px;
-      height: 120px;
-      margin: 0 auto;
-      text-align: center;
-      border: 2px solid rgba(255, 255, 255, 1);
-      border-radius: 4px;
-      .title {
-        font-size: 30px;
-        color: #ab6f2e;
-        line-height: 75px;
-        background: linear-gradient(
-          0deg,
-          rgba(255, 155, 61, 1) 0%,
-          #ffffff 100%
-        ); /* 背景色渐变 */
-        -webkit-background-clip: text; /* 规定背景的划分区域 */
-        -webkit-text-fill-color: transparent;
-      }
-      .e_title {
-        font-size: 14px;
-        color: #ffffff;
-        font-weight: bold;
-      }
-    }
+  height: 100%;
+  background-image: url(../images/banner0.jpeg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  .logo {
+    position: absolute;
+    top: 108px;
+    left: 160px;
   }
-}
-.content {
-  width: 460px;
-  height: 220px;
-  margin: 0 auto;
-  .operating_password {
-    height: 48px;
-    width: 100%;
-    .remember {
-      float: left;
-      color: #575553;
-      font-size: 14px;
+  .content {
+    width: 580px;
+    height: 408px;
+    background-color: #fff;
+    position: absolute;
+    top:20%;
+    left:50%;
+    margin-left: -290px;
+    border-radius:4px;
+    padding: 60px;
+    padding-top: 35px;
+    padding-bottom: 0;
+    .title{
+      margin-bottom:31px;
+      color:#575553;
+      font-size:16px;
     }
-    .change_password {
-      float: right;
-      color: #ffae36;
-      font-size: 14px;
-    }
-    .code-box {
+    .operating_password {
+      height: 48px;
       width: 100%;
-      .get-code {
-        float: right;
-        height: 48px;
-        width: 120px;
-        background-color: orange;
-        color: #ffffff;
-        cursor: pointer;
-        outline-style: none;
-        border-radius: 4px;
-      }
-      .ivu-input-wrapper {
-        width: 328px;
+      .remember {
         float: left;
+        color: #575553;
+        font-size: 14px;
+      }
+      .change_password {
+        float: right;
+        color: #ffae36;
+        font-size: 14px;
+      }
+      .code-box {
+        width: 100%;
+        .get-code {
+          float: right;
+          height: 48px;
+          width: 120px;
+          background-color: orange;
+          color: #ffffff;
+          cursor: pointer;
+          outline-style: none;
+          border-radius: 4px;
+        }
+        .ivu-input-wrapper {
+          width: 328px;
+          float: left;
+        }
       }
     }
-  }
-  .ivu-btn {
-    width: 100%;
-    height: 48px;
-    font-size: 16px;
+    .ivu-btn {
+      width: 100%;
+      height: 48px;
+      font-size: 16px;
+    }
   }
 }
 </style>

@@ -14,7 +14,7 @@
                 </Menu>
             </Header>
             <Layout>
-                <Sider width="306" hide-trigger :style="{background: '#515a6e'}">
+                <Sider width="250" hide-trigger :style="{background: '#515a6e'}">
                     <Menu active-name="1" theme="dark" :open-names="['1']">
                         <MenuItem name="1">
                             <router-link :to="{name:'myAccount'}" class="staffAccount"><img src="../images/myAccount.png" alt="">我的账户</router-link>
@@ -120,11 +120,11 @@ export default {
 //     overflow-y: scroll
 // }
 .ivu-menu-dark{
-    width: 306px !important;
+    width: 250px !important;
 }
 .ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item{
     padding: 0;
-    padding-left:0 !important;
+    padding-left:0;
     height:46px;
     line-height: 46px;
     span{
@@ -135,14 +135,14 @@ export default {
     }
 }
 .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
-    background-color: #FFAE36;
+    background-color: #FFAE36 !important;
 }
 .ivu-menu-vertical .ivu-menu-item{
     padding: 0;
     width: 100%;
     height: 50px;
     line-height: 50px;
-    width: 306px;
+    width: 250px;
     .staffAccount{
         width:100%;
         height:100%;
@@ -153,7 +153,7 @@ export default {
 .ivu-menu{
     text-align: left;
     .ivu-menu-item{
-        width: 306px;
+        width: 250px;
         height: 68px;
         padding-left: 22px;
         line-height: 68px;

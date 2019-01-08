@@ -1,32 +1,33 @@
 <template>
   <div id="login">
-    <div class="banner">
-      <div class="banner_count">
-        <img src="../images/logo.png" alt class="logo">
-        <div class="box">
-          <p class="title">放心签客户后台系统</p>
-          <p class="e_title">Relax Signature Customer Background System</p>
-        </div>
+    <img src="../images/logo.png" alt class="logo">
+    <div class="center">
+      <img src="../images/pic-text.png" alt class="pic-text">
+      <div class="content">
+        <p class="title">登录界面</p>
+        <Form ref="formInline" :model="formInline" :rules="ruleInline" id="ipt_logo">
+          <FormItem prop="user">
+            <Input type="text" v-model="formInline.user" placeholder="请输入您的手机号"></Input>
+          </FormItem>
+          <FormItem prop="password">
+            <Input
+              type="password"
+              v-model="formInline.password"
+              placeholder="请输入您的密码"
+              @keyup.enter.native="handleSubmit('formInline')"
+            ></Input>
+          </FormItem>
+          <div class="operating_password">
+            <Checkbox v-model="formInline.checked" class="remember">记住密码</Checkbox>
+            <router-link :to="{name:'changePassword', query:{phone: this.formInline.user}}">
+              <span class="change_password">更改密码</span>
+            </router-link>
+          </div>
+          <FormItem>
+            <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
+          </FormItem>
+        </Form>
       </div>
-    </div>
-    <div class="content">
-      <Form ref="formInline" :model="formInline" :rules="ruleInline" id="ipt_logo">
-        <FormItem prop="user">
-          <Input type="text" v-model="formInline.user" placeholder="请输入您的手机号"></Input>
-        </FormItem>
-        <FormItem prop="password">
-          <Input type="password" v-model="formInline.password" placeholder="请输入您的密码"  @keyup.enter.native="handleSubmit('formInline')"></Input>
-        </FormItem>
-        <div class="operating_password">
-          <Checkbox v-model="formInline.checked" class="remember">记住密码</Checkbox>
-          <router-link :to="{name:'changePassword', query:{phone: this.formInline.user}}">
-            <span class="change_password">更改密码</span>
-          </router-link>
-        </div>
-        <FormItem>
-          <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
-        </FormItem>
-      </Form>
     </div>
   </div>
 </template> 
@@ -42,7 +43,7 @@ export default {
       formInline: {
         user: "",
         password: "",
-        checked :true
+        checked: true
       },
       ruleInline: {
         user: [
@@ -77,7 +78,7 @@ export default {
       : {};
     this.formInline.user = user.user;
     if (user.checked === false) {
-      this.formInline.password = '';
+      this.formInline.password = "";
     } else {
       this.formInline.password = user.password;
     }
@@ -109,67 +110,53 @@ export default {
 </script>
 <style lang='less' scoped>
 #login {
-  .banner {
-    height: 412px;
-    width: 100%;
-    background-color: orange;
-    background-image: url(../images/banner.png);
-    background-size: cover;
-    text-align: center;
-    margin-bottom: 48px;
-    .banner_count {
-      width: 100%;
-      height: 100%;
-      background: rgba(43, 59, 75, 0.55);
-      .logo {
-        width: 196px;
-        height: 68px;
-        margin-top: 149px;
-        margin-bottom: 30px;
-      }
-      .box {
-        width: 364px;
-        height: 120px;
-        margin: 0 auto;
-        text-align: center;
-        border: 2px solid rgba(255, 255, 255, 1);
-        border-radius: 4px;
-        .title {
-          font-size: 30px;
-          color: #ab6f2e;
-          line-height: 75px;
-          background: linear-gradient(
-            0deg,
-            rgba(255, 155, 61, 1) 0%,
-            #ffffff 100%
-          ); /* 背景色渐变 */
-          -webkit-background-clip: text; /* 规定背景的划分区域 */
-          -webkit-text-fill-color: transparent;
-        }
-        .e_title {
-          font-size: 14px;
-          color: #ffffff;
-          font-weight: bold;
-        }
-      }
-    }
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/banner0.jpeg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  .logo {
+    position: absolute;
+    top: 108px;
+    left: 160px;
   }
-  .content {
-    width: 460px;
-    height: 220px;
-    margin: 0 auto;
-    .operating_password {
-      height: 36px;
-      width: 100%;
-      .remember {
-        float: left;
+  .center {
+    width: 580px;
+    position: absolute;
+    top:20%;
+    left:50%;
+    margin-left: -290px;
+    .pic-text {
+      margin-bottom: 60px;
+    }
+    .content {
+      width: 580px;
+      height: 348px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding:60px;
+      padding-top: 35px;
+      padding-bottom: 0;
+      border-radius:4px;
+      .title {
         color: #575553;
-        font-size: 14px;
+        font-size: 16px;
+        margin-bottom: 31px;
       }
-      .change_password {
-        float: right;
-        color: #ffae36;
-        font-size: 14px;
+      .operating_password {
+        height: 36px;
+        width: 100%;
+        .remember {
+          float: left;
+          color: #575553;
+          font-size: 14px;
+        }
+        .change_password {
+          float: right;
+          color: #ffae36;
+          font-size: 14px;
+        }
       }
     }
   }
